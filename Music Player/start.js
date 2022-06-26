@@ -6,7 +6,13 @@
   const endTimeElem = document.querySelector('.end-time');
 
   function onClick(){
-    audioElem.play();
+    if(audioElem.paused){
+      audioElem.play();
+      playBtnElem.className = 'pause';
+    }else{
+      audioElem.pause();
+      playBtnElem.className = 'play';
+    }
   }
   
   function run(){

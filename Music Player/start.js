@@ -14,9 +14,38 @@
       playBtnElem.className = 'play';
     }
   }
+
+  function getDuration(time){
+    const minutes = Math.floor(time / 60 % 60).toString();
+    const seconds = Math.floor(time % 60).toString().padStart(2,'0')
+    return `${minutes}:${seconds}`
+  }
+
+  function onTimeUpdate(){
+    startTimeElem.innerHTML = getDuration(audioElem.currentTime);
+    progressBarElem.value = audioElem.currentTime;
+  }
+
+  function onLoadedData(){
+    endTimeElem.innerHTML = getDuration(audioElem.duration);
+    progressBarElem.max = audioElem.duration;
+  }
+
+  function onInput(){
+    audioElem.currentTime = progressBarElem.value;
+  }
+
+  function onEnded(){
+    playBtnElem.className = 'play';
+    audioElem.currentTime = 0;
+  }
   
   function run(){
     playBtnElem.addEventListener('click', onClick);
+    audioElem.addEventListener('timeupdate', onTimeUpdate);
+    audioElem.addEventListener('loadeddata', onLoadedData);
+    audioElem.addEventListener('ended', onEnded)
+    progressBarElem.addEventListener('input', onInput);
   }
   run()
 

@@ -19,9 +19,24 @@
     }
   }
 
+  function onResult(event){
+    const textElem = document.querySelector('.text');
+    const { transcript } = event.results[0][0];
+    textElem.innerText += transcript;
+  }
+  function onEnd(){
+    const isRecording = btnElem.classList.contains('pause');
+
+    if(isRecording){
+        recognition.start();
+    }
+  }
+
   function run(){
     recognition.lang = 'th-TH';
 
+    recognition.addEventListener('end',onEnd)
+    recognition.addEventListener('result', onResult);
     btnElem.addEventListener('click', onClick)
   }
 

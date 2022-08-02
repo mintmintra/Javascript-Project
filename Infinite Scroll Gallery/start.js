@@ -1,5 +1,5 @@
 (() => {
- const KEY = '';
+ const KEY = 'p3Sm0W3ROuxjmk5a9GuC-3WZHC3TDDMfLX4zuPN-slQ';
  const loaderElem = document.querySelector('.loader');
  let page = 1;
 

@@ -5,6 +5,7 @@
     console.log(this);
     console.log(`My name is ${this.name}`);
   }
+  printName()
   // 2. How to know what is "this"?
   //// 2.1 Invoker object
   //// 2.2 Global object (window, global)

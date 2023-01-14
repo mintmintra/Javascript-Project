@@ -11,6 +11,23 @@ btn.addEventListener("click",(e)=>{
     }else if(height === "" || isNaN(height)){
         return result.innerHTML = "กรุณาป้อนส่วนสูง"
     }else{
+        height = height/100
+        let bmi = (weight/Math.pow(height,2)).toFixed(2)
         
+        if(bmi<18.5){
+            showResult(bmi, "ผอมเกินไป","blue")
+        }else if(bmi>=18.5 && bmi<=24.9){
+            showResult(bmi, "ปกติ","green")
+        }else if(bmi>=25 && bmi<=29.9){
+            showResult(bmi, "อ้วน","red")
+        }else{
+            showResult(bmi, "อ้วนเกินไป","purple")
+        }
     }
 })
+
+function showResult(bmi,message,color){
+    result.style.backgroundColor = color
+    return result.innerHTML = `ผลลัพธ์ = ${bmi} (${message})`
+    
+}
